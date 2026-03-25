@@ -14,34 +14,31 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
 
   final List<Map<String, String>> articles = [
     {
-      'title': 'Intermittent Fasting Benefits',
-      'excerpt':
-          'Learn how intermittent fasting improves metabolism, energy, and focus.',
-      'category': 'Nutrition',
-      'date': 'May 15, 2024',
-      'image': 'assets/images/article1.jpg',
+      'title': 'فوائد الصيام المتقطع',
+      'excerpt': 'تعرف إزاي الصيام المتقطع بيحسن الأيض والنشاط والتركيز.',
+      'category': 'التغذية',
+      'date': '15 مايو 2024',
+      'image': 'assets/images/bord1.png',
       'fullText':
-          'Intermittent fasting has shown many benefits such as improved insulin sensitivity, fat loss, and mental clarity.',
+          'الصيام المتقطع ليه فوائد زي تحسين حساسية الإنسولين، خسارة الوزن، وصفاء التفكير.',
     },
     {
-      'title': 'Child Vaccination Importance',
-      'excerpt':
-          'Vaccination is essential for preventing diseases in children and communities.',
-      'category': 'Preventive Health',
-      'date': 'May 12, 2024',
-      'image': 'assets/images/article2.jpg',
+      'title': 'أهمية تطعيم الأطفال',
+      'excerpt': 'التطعيم مهم عشان يحمي الأطفال والمجتمع من الأمراض.',
+      'category': 'الطب الوقائي',
+      'date': '12 مايو 2024',
+      'image': 'assets/images/bord1.png',
       'fullText':
-          'Regular vaccinations protect children from serious illnesses and contribute to public health safety.',
+          'التطعيمات المنتظمة بتحافظ على صحة الأولاد وتقليل انتقال الأمراض في المجتمع.',
     },
     {
-      'title': 'Yoga for Stress Reduction',
-      'excerpt':
-          'Yoga supports body and mind balance while reducing stress levels.',
-      'category': 'Mental Health',
-      'date': 'May 10, 2024',
-      'image': 'assets/images/article3.jpg',
+      'title': 'اليوغا لتخفيف التوتر',
+      'excerpt': 'اليوغا بتساعد الجسم والعقل على الاسترخاء وتقليل الضغوط.',
+      'category': 'الصحة النفسية',
+      'date': '10 مايو 2024',
+      'image': 'assets/images/bord1.png',
       'fullText':
-          'Practicing yoga helps reduce anxiety, enhance flexibility, and improve overall wellbeing.',
+          'ممارسة اليوغا بانتظام بتخفض القلق، بتحسن المرونة، وبتسهم في الرفاهية العامة.',
     },
   ];
 
@@ -59,10 +56,10 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
   }
 
   final List<String> categories = [
-    'All',
-    'Nutrition',
-    'Preventive Health',
-    'Mental Health',
+    'الكل',
+    'التغذية',
+    'الطب الوقائي',
+    'الصحة النفسية',
   ];
 
   @override
@@ -74,12 +71,12 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         title: const Text(
-          'Articles',
+          'المقالات الطبية',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -93,7 +90,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search articles...',
+                  hintText: 'ابحث عن مقالة...',
                   prefixIcon: const Icon(Icons.search),
                   filled: true,
                   fillColor: Colors.white,
@@ -221,7 +218,12 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                                       article['date']!,
                                       style: const TextStyle(
                                         fontSize: 12,
-                                        color: Colors.grey,
+                                        color: Color.fromARGB(
+                                          255,
+                                          164,
+                                          158,
+                                          158,
+                                        ),
                                       ),
                                     ),
                                     TextButton(
@@ -230,7 +232,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                                         '/article_details',
                                         arguments: article,
                                       ),
-                                      child: const Text('Read more'),
+                                      child: const Text('اقرأ المزيد'),
                                     ),
                                   ],
                                 ),

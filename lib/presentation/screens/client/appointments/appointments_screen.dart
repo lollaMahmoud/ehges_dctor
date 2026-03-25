@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../models/appointment_model.dart';
+import '../widgets/client_bottom_navigation_bar.dart';
 
 class AppointmentsScreen extends StatefulWidget {
   const AppointmentsScreen({super.key});
@@ -182,12 +183,10 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
             ),
           ),
           // Content
-          Expanded(
-            child: _buildTabContent(),
-          ),
+          Expanded(child: _buildTabContent()),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
+      bottomNavigationBar: const ClientBottomNavigationBar(currentIndex: 1),
     );
   }
 
@@ -203,19 +202,12 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
-                Icons.calendar_today,
-                size: 64,
-                color: Colors.grey,
-              ),
+              const Icon(Icons.calendar_today, size: 64, color: Colors.grey),
               const SizedBox(height: 16),
               const Text(
                 'لا توجد مواعيد ملغاة',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ],
           ),
@@ -232,19 +224,12 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
-                Icons.calendar_today,
-                size: 64,
-                color: Colors.grey,
-              ),
+              const Icon(Icons.calendar_today, size: 64, color: Colors.grey),
               const SizedBox(height: 16),
               const Text(
                 'لا توجد مواعيد',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ],
           ),
@@ -311,11 +296,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                   color: const Color(0xFF4A8B6F),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 30,
-                ),
+                child: const Icon(Icons.person, color: Colors.white, size: 30),
               ),
             ],
           ),
@@ -323,19 +304,13 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           Text(
             appointment.doctorName,
             textAlign: TextAlign.right,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
             appointment.specialtyAr,
             textAlign: TextAlign.right,
-            style: const TextStyle(
-              fontSize: 13,
-              color: Colors.blue,
-            ),
+            style: const TextStyle(fontSize: 13, color: Colors.blue),
           ),
           const SizedBox(height: 12),
           Row(
@@ -345,17 +320,10 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                 child: Text(
                   appointment.dateTime,
                   textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey,
-                  ),
+                  style: const TextStyle(fontSize: 13, color: Colors.grey),
                 ),
               ),
-              const Icon(
-                Icons.access_time,
-                size: 16,
-                color: Colors.grey,
-              ),
+              const Icon(Icons.access_time, size: 16, color: Colors.grey),
             ],
           ),
           const SizedBox(height: 12),
@@ -379,10 +347,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                         ),
                         child: const Text(
                           'إلغاء',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
                         ),
                       ),
                     ),
@@ -400,10 +365,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                         ),
                         child: const Text(
                           'تعديل الموعد',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
+                          style: TextStyle(fontSize: 12, color: Colors.white),
                         ),
                       ),
                     ),
@@ -423,10 +385,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                     ),
                     child: const Text(
                       'عرض التقرير',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
                   ),
                 ),
@@ -442,70 +401,12 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                 ),
                 child: const Text(
                   'رسالة',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.blue,
-                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.blue),
                 ),
               ),
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 10,
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          currentIndex: 1,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'الرئيسية',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'مواعيدي',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: 'المحادثات',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'البروفايل',
-            ),
-          ],
-          onTap: (index) {
-            switch (index) {
-              case 0:
-                Navigator.pushNamed(context, '/home');
-                break;
-              case 1:
-                break;
-              case 2:
-                Navigator.pushNamed(context, '/messages');
-                break;
-              case 3:
-                Navigator.pushNamed(context, '/profile');
-                break;
-            }
-          },
-        ),
       ),
     );
   }

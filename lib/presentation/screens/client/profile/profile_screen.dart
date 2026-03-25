@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/client_bottom_navigation_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -71,19 +72,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const Text(
                     'د. أحمد محمود',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   const Text(
                     '+966 50 123 4567',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
@@ -119,10 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const Text(
                     'الإعدادات العامة',
                     textAlign: TextAlign.right,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
                   _buildSettingsTile(
@@ -166,10 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   const Text(
                     'تفعيل التنبيهات',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -184,10 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const Text(
                     'المساعدة والدعم',
                     textAlign: TextAlign.right,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
                   _buildSettingsTile(
@@ -271,16 +257,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Text(
                 '© 2024 نظام الحجز الذكي، جميع الحقوق محفوظة.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey,
-                ),
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
+      bottomNavigationBar: const ClientBottomNavigationBar(currentIndex: 3),
     );
   }
 
@@ -315,70 +298,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 if (subtitle.isNotEmpty)
                   Text(
                     subtitle,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
                   ),
               ],
             ),
             Icon(icon, color: Colors.blue, size: 20),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 10,
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          currentIndex: 3,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'الرئيسية',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'مواعيدي',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: 'المحادثات',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'البروفايل',
-            ),
-          ],
-          onTap: (index) {
-            switch (index) {
-              case 0:
-                Navigator.pushNamed(context, '/home');
-                break;
-              case 1:
-                Navigator.pushNamed(context, '/appointments');
-                break;
-              case 2:
-                Navigator.pushNamed(context, '/messages');
-                break;
-              case 3:
-                break;
-            }
-          },
         ),
       ),
     );

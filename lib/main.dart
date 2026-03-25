@@ -12,7 +12,8 @@ import 'presentation/screens/client/doctor_details/doctor_details_screen.dart';
 import 'presentation/screens/client/book_appointment/book_appointment_screen.dart';
 import 'presentation/screens/client/book_appointment/appointment_confirmation_screen.dart';
 import 'presentation/screens/client/appointments/appointments_screen.dart';
-import 'presentation/screens/client/messages/messages_screen.dart';
+import 'presentation/screens/client/articles/article_details_screen.dart';
+import 'presentation/screens/client/articles/articles_screen.dart';
 import 'presentation/screens/client/profile/profile_screen.dart';
 import 'presentation/screens/doctor/home/doctor_home_screen.dart';
 import 'presentation/screens/doctor/schedule/doctor_appointment_details_screen.dart';
@@ -45,14 +46,21 @@ class MyApp extends StatelessWidget {
         '/client/home': (context) => const ClientHomeScreen(),
         '/doctors_list': (context) => const DoctorsListScreen(),
         '/appointments': (context) => const AppointmentsScreen(),
-        '/messages': (context) => const MessagesScreen(),
+        '/articles': (context) => const ArticlesScreen(),
+        '/article_details': (context) {
+          final args =
+              ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+          return ArticleDetailsScreen(article: args);
+        },
         '/profile': (context) => const ProfileScreen(),
         '/doctor/home': (context) => const DoctorHomeScreen(),
         '/doctor/schedule': (context) => const DoctorScheduleScreen(),
         '/doctor/articles': (context) => const DoctorArticlesScreen(),
         '/doctor/profile-edit': (context) => const DoctorProfileEditScreen(),
-        '/doctor/professional-info': (context) => const DoctorProfessionalInfoScreen(),
-        '/doctor/professional-info-edit': (context) => const DoctorProfessionalInfoEditScreen(),
+        '/doctor/professional-info': (context) =>
+            const DoctorProfessionalInfoScreen(),
+        '/doctor/professional-info-edit': (context) =>
+            const DoctorProfessionalInfoEditScreen(),
         '/reset-password': (context) => const ResetPasswordScreen(),
       },
       onGenerateRoute: (settings) {
@@ -83,16 +91,11 @@ class MyApp extends StatelessWidget {
             ),
           );
         }
-        if (settings.name == '/chat') {
-          final conversation = settings.arguments as Map<String, dynamic>;
-          return MaterialPageRoute(
-            builder: (context) => ChatScreen(conversation: conversation),
-          );
-        }
         if (settings.name == '/doctor/appointment-details') {
           final data = settings.arguments as Map<String, String>;
           return MaterialPageRoute(
-            builder: (context) => DoctorAppointmentDetailsScreen(appointment: data),
+            builder: (context) =>
+                DoctorAppointmentDetailsScreen(appointment: data),
           );
         }
         return null;
@@ -103,10 +106,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: const Locale('ar'),
-      supportedLocales: const [
-        Locale('ar'),
-        Locale('en'),
-      ],
+      supportedLocales: const [Locale('ar'), Locale('en')],
       debugShowCheckedModeBanner: false,
     );
   }
